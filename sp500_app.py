@@ -39,11 +39,51 @@ st.header('Display Companies in Selected Sector')
 st.write("Data Dimension: " + str(df_selected_sector.shape[0]) + " rows and " + str(df_selected_sector.shape[1]) + " columns.")
 st.dataframe(df_selected_sector)
 
+# Get Finance Data
+if(selected_sector != []):
+    finance_data = yf.download(
+        tickers = list(df_selected_sector[:50].Symbol),
+        period = "ytd",
+        interval = "1d",
+        group_by = "ticker",    
+        auto_adjust = True,
+        prepost = True,
+        threads = True,
+        proxy = None
+        )
+    st.write("Please select a Sector")
+else:
+    st.write("")
+
 #Download S&P 500 data
 def filedownload(df):
     csv = df.to_csv(index = False)
     b64 = base64.b64encode(csv.encode()).decode() # strings <-> bytes conversions
     href = f'<a href="data:file/csv;base64,{b64}" download="SP500.csv">Download CSV File</a>'
     return href
-
 st.markdown(filedownload(df_selected_sector), unsafe_allow_html=True)
+
+# Add silder into the sidebar
+num_company = st.sidebar.slider('Number of Companies', 1, 50)
+
+
+
+# Plot Closing Price of Query Symbol with pyplot
+#def price_plot(symbol):
+    #df = pd.DataFrame(finance_data[symbol].Close)
+    #df['Date'] = df.index
+    #plt.fill_between(df.Date, df.Close, color='blue', alpha=0.3)
+    #plt.plot(df.Date, df.Close, color='blue', alpha=0.8)
+    #plt.xticks(rotation=90)
+    #plt.title(symbol, fontweight='bold')
+    #plt.xlabel('Date', fontweight='bold')
+    #plt.ylabel('Closing Price', fontweight='bold')
+    #return st.pyplot()
+#    return st.area_chart(pd.DataFrame(finance_data[symbol].Close))
+
+if st.button('Show Plots'):
+    st.header('Stock Closing Price')
+    for i in list(df_selected_sector.Symbol)[:num_company]:
+        st.write(i)
+        # Plot Closing Price of Query Symbol with area_chart
+        st.area_chart(pd.DataFrame(finance_data[i].Close))

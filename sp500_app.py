@@ -3,15 +3,13 @@ import streamlit as st
 import base64
 import pandas as pd
 import numpy as np
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 st.title('S&P 500 App')
 
 st.markdown(
     """
     This app retrieves the list of the **S&P 500** (from Wikipedia)
-    * **Python libraries:** base64, pandas, streamlit, numpy, yfinance, matplotlib, seaborn
+    * **Python libraries:** base64, pandas, streamlit, numpy, yfinance
     * **Data source:** [Wikipedia](https://wikipedia.org/)
     """
 )
@@ -51,9 +49,6 @@ if(selected_sector != []):
         threads = True,
         proxy = None
         )
-    st.write("Please select a Sector")
-else:
-    st.write("")
 
 #Download S&P 500 data
 def filedownload(df):
@@ -66,24 +61,9 @@ st.markdown(filedownload(df_selected_sector), unsafe_allow_html=True)
 # Add silder into the sidebar
 num_company = st.sidebar.slider('Number of Companies', 1, 50)
 
-
-
-# Plot Closing Price of Query Symbol with pyplot
-#def price_plot(symbol):
-    #df = pd.DataFrame(finance_data[symbol].Close)
-    #df['Date'] = df.index
-    #plt.fill_between(df.Date, df.Close, color='blue', alpha=0.3)
-    #plt.plot(df.Date, df.Close, color='blue', alpha=0.8)
-    #plt.xticks(rotation=90)
-    #plt.title(symbol, fontweight='bold')
-    #plt.xlabel('Date', fontweight='bold')
-    #plt.ylabel('Closing Price', fontweight='bold')
-    #return st.pyplot()
-#    return st.area_chart(pd.DataFrame(finance_data[symbol].Close))
-
+# Plot Closing Price of Query Symbol with area_chart
 if st.button('Show Plots'):
     st.header('Stock Closing Price')
     for i in list(df_selected_sector.Symbol)[:num_company]:
         st.write(i)
-        # Plot Closing Price of Query Symbol with area_chart
         st.area_chart(pd.DataFrame(finance_data[i].Close))

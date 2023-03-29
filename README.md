@@ -1,9 +1,9 @@
 # Exploratory Data Analysis S&P 500
-_This is a very simple project that is used to view the prices of a stock. It uses the Streamlit and yfinance libraries._
+_Exploratory Data Analysis (EDA) is a crucial step in data science projects. It helps in understanding the underlying patterns and relationships in the data. In this tutorial, we will perform EDA on the S&P 500 dataset using Python and the yfinance, streamlit, base64, pandas and numpy libraries._
 
 ## 🚀 Getting Started  
 
-_Streamlit is a free and open-source framework to rapidly build and share beautiful machine learning and data science web apps. It is a Python-based library specifically designed for machine learning engineers. yfinance is a popular open source library developed by Ran Aroussi as a means to access the financial data available on Yahoo Finance. Combining these two libraries we can create different applications, like the one you can find in this script._
+_The S&P 500 Index, or Standard & Poor's 500 Index, is a market-capitalization-weighted index of 500 leading publicly traded companies in the U.S. The S&P 500 index is regarded as one of the best gauges of prominent American equities' performance, and by extension, that of the stock market overall. With the help of Streamlit, that is a free and open-source framework to rapidly build and share beautiful machine learning and data science web apps, and other importntat libraries, I create this application that allows you to track companies according to their sector, and also allows you to see their results in the last year, for each company._
 
 ## 📋 Pre-requisites
 

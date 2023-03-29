@@ -58,10 +58,10 @@ _Open terminal. Go into the cloned project directory, activate the Python virtua
 streamlit run sp500_app.py
 ```
 
-_and then you must open the web page locally where you can see the charts of the ticker you indicated. In this case, we will see the VOO ticker:_
-![image](https://user-images.githubusercontent.com/66132335/226723011-b6249210-3cfe-471d-88b5-e04c92fd978d.png)
+_and then you must open the web page locally where you can see the this:_
+![image](https://user-images.githubusercontent.com/66132335/228690444-65e46e5f-46cd-48c9-8edd-2b111121d508.png)
 
-![image](https://user-images.githubusercontent.com/66132335/226723089-ceebd80a-d535-48a6-bf27-1f31bfea414f.png)
+_and then you must open the web page locally where you can see the this:_
 
 ## ✒️ Authors 
 
